@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { 
-  Layout, Type, Image as ImageIcon, Settings, 
+import {
+  Layout, Type, Image as ImageIcon, Settings,
   Download, Wand2, ChevronLeft, ChevronRight,
   Palette, Upload, Plus, Trash2, Maximize,
   Undo, Redo, RotateCcw,
@@ -43,7 +43,7 @@ const PRESET_STYLES = [
     desc: '瑞士極簡風，清爽有力，強調重點',
     palettes: [
       { bg: '#FFFFFF', title: '#000000', body: '#171717', label: '經典黑白' },
-      { bg: '#FDE047', title: '#000000', body: '#171717', label: '警示黃' }, 
+      { bg: '#FDE047', title: '#000000', body: '#171717', label: '警示黃' },
       { bg: '#000000', title: '#22D3EE', body: '#FFFFFF', label: '電光藍' },
       { bg: '#000000', title: '#F472B6', body: '#FFFFFF', label: '螢光粉' },
       { bg: '#EF4444', title: '#FFFFFF', body: '#FEF2F2', label: 'Supreme紅' },
@@ -55,7 +55,7 @@ const PRESET_STYLES = [
       bgType: 'color',
       bgColor: '#FFFFFF',
       overlayType: 'none',
-      titleStyle: { fontFamily: 'Anton', color: '#000000', textAlign: 'left', fontWeight: '400', hasBackground: false, enableShadow: false, lineHeight: 1.1 }, 
+      titleStyle: { fontFamily: 'Anton', color: '#000000', textAlign: 'left', fontWeight: '400', hasBackground: false, enableShadow: false, lineHeight: 1.1 },
       subtitleStyle: { fontFamily: 'Anton', color: '#000000', textAlign: 'left', fontWeight: '400', hasBackground: false, enableShadow: false },
       bodyStyle: { fontFamily: 'Noto Sans TC', color: '#171717', fontWeight: '500', textAlign: 'left', hasBackground: false, enableShadow: false },
       noteStyle: { fontFamily: 'Noto Sans TC', color: '#DC2626', textAlign: 'left', hasBackground: false },
@@ -80,8 +80,8 @@ const PRESET_STYLES = [
     ],
     config: {
       bgType: 'image',
-      bgImage: '', 
-      bgColor: '#1c1917', 
+      bgImage: '',
+      bgColor: '#1c1917',
       overlayType: 'black',
       overlayOpacity: 0.6,
       bgBlur: 0,
@@ -125,12 +125,12 @@ const PRESET_STYLES = [
     icon: Feather,
     desc: '手寫字體、溫暖米黃，適合牧者心聲',
     palettes: [
-       { bg: '#FDF6E3', title: '#5D4037', body: '#795548', label: '米黃/咖' },
-       { bg: '#FEFCE8', title: '#854D0E', body: '#A16207', label: '淡黃/金' },
-       { bg: '#F0F9FF', title: '#0369A1', body: '#075985', label: '信紙藍' },
-       { bg: '#FFFBEB', title: '#B45309', body: '#D97706', label: '蜂蜜' },
-       { bg: '#F5F3FF', title: '#6D28D9', body: '#7C3AED', label: '薰衣草' },
-       { bg: '#FFF7ED', title: '#C2410C', body: '#EA580C', label: '暖陽' },
+      { bg: '#FDF6E3', title: '#5D4037', body: '#795548', label: '米黃/咖' },
+      { bg: '#FEFCE8', title: '#854D0E', body: '#A16207', label: '淡黃/金' },
+      { bg: '#F0F9FF', title: '#0369A1', body: '#075985', label: '信紙藍' },
+      { bg: '#FFFBEB', title: '#B45309', body: '#D97706', label: '蜂蜜' },
+      { bg: '#F5F3FF', title: '#6D28D9', body: '#7C3AED', label: '薰衣草' },
+      { bg: '#FFF7ED', title: '#C2410C', body: '#EA580C', label: '暖陽' },
     ],
     config: {
       bgType: 'color',
@@ -150,12 +150,12 @@ const PRESET_STYLES = [
     icon: BookOpen,
     desc: '極簡黑體、深藍冷調，適合知識內容',
     palettes: [
-       { bg: '#1E293B', title: '#FFFFFF', body: '#E2E8F0', label: '深藍/白' },
-       { bg: '#0F172A', title: '#38BDF8', body: '#E0F2FE', label: '午夜/淺藍' },
-       { bg: '#334155', title: '#F1F5F9', body: '#CBD5E1', label: '石墨/灰' },
-       { bg: '#14532D', title: '#FFFFFF', body: '#DCFCE7', label: '學院綠' },
-       { bg: '#451A03', title: '#FEF3C7', body: '#FDE68A', label: '書卷咖' },
-       { bg: '#312E81', title: '#E0E7FF', body: '#C7D2FE', label: '靛藍' },
+      { bg: '#1E293B', title: '#FFFFFF', body: '#E2E8F0', label: '深藍/白' },
+      { bg: '#0F172A', title: '#38BDF8', body: '#E0F2FE', label: '午夜/淺藍' },
+      { bg: '#334155', title: '#F1F5F9', body: '#CBD5E1', label: '石墨/灰' },
+      { bg: '#14532D', title: '#FFFFFF', body: '#DCFCE7', label: '學院綠' },
+      { bg: '#451A03', title: '#FEF3C7', body: '#FDE68A', label: '書卷咖' },
+      { bg: '#312E81', title: '#E0E7FF', body: '#C7D2FE', label: '靛藍' },
     ],
     config: {
       bgType: 'color',
@@ -175,12 +175,12 @@ const PRESET_STYLES = [
     icon: Gamepad2, // Requires importing Gamepad2 or Dices
     desc: '大膽配色、粗框線條、像素風，適合年輕潮流',
     palettes: [
-       { bg: '#FF00FF', title: '#FFFF00', body: '#FFFFFF', label: '桃紅/黃' },
-       { bg: '#000000', title: '#00FF00', body: '#FFFFFF', label: '駭客/綠' },
-       { bg: '#FFFF00', title: '#0000FF', body: '#000000', label: '黃/藍' },
-       { bg: '#E0E7FF', title: '#FF0000', body: '#0000FF', label: '白/紅藍' },
-       { bg: '#4F46E5', title: '#A5B4FC', body: '#FFFFFF', label: '電子紫' },
-       { bg: '#F472B6', title: '#881337', body: '#FFFFFF', label: '芭比粉' },
+      { bg: '#FF00FF', title: '#FFFF00', body: '#FFFFFF', label: '桃紅/黃' },
+      { bg: '#000000', title: '#00FF00', body: '#FFFFFF', label: '駭客/綠' },
+      { bg: '#FFFF00', title: '#0000FF', body: '#000000', label: '黃/藍' },
+      { bg: '#E0E7FF', title: '#FF0000', body: '#0000FF', label: '白/紅藍' },
+      { bg: '#4F46E5', title: '#A5B4FC', body: '#FFFFFF', label: '電子紫' },
+      { bg: '#F472B6', title: '#881337', body: '#FFFFFF', label: '芭比粉' },
     ],
     config: {
       bgType: 'color',
@@ -215,10 +215,10 @@ const App: React.FC = () => {
   // --- State ---
   const [slides, setSlides] = useState<SlideContent[]>(initialState.slides);
   const [config, setConfig] = useState<DesignConfig>(initialState.config);
-  const [activePresetId, setActivePresetId] = useState<string>('power'); 
-  
+  const [activePresetId, setActivePresetId] = useState<string>('power');
+
   const [lastInteractedSlideId, setLastInteractedSlideId] = useState<string | null>(null);
-  const [history, setHistory] = useState<{slides: SlideContent[], config: DesignConfig}[]>([
+  const [history, setHistory] = useState<{ slides: SlideContent[], config: DesignConfig }[]>([
     { slides: initialState.slides, config: initialState.config }
   ]);
   const [historyIndex, setHistoryIndex] = useState(0);
@@ -226,7 +226,7 @@ const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'content' | 'design' | 'text'>('content');
   const [previewScale, setPreviewScale] = useState(0.4);
   const [showMobilePreview, setShowMobilePreview] = useState(false);
-  
+
   const [promptText, setPromptText] = useState('');
   const [pageCount, setPageCount] = useState(5);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -238,12 +238,12 @@ const App: React.FC = () => {
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // --- Effects ---
-  
+
   // 1. Sanitize Config Effect: Force Dela Gothic One to 400 weight to prevent "Stuck" bold state
   useEffect(() => {
     let hasChanges = false;
     const newConfig = { ...config };
-    
+
     (['titleStyle', 'subtitleStyle', 'bodyStyle', 'noteStyle', 'endTitleStyle', 'endBodyStyle'] as const).forEach(key => {
       // If font is Dela Gothic One, force weight to 400 (Regular)
       // This is necessary because Dela Gothic One is very thick and doesn't support bolding well,
@@ -262,19 +262,19 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const handleResize = () => {
-       const w = window.innerWidth;
-       if (w < 768) {
-         // Mobile: Calculate exact scale to fit width with padding
-         // Standard width is 1080px. We want some padding (e.g. 40px total).
-         const availableWidth = w - 40;
-         const mobileScale = availableWidth / 1080;
-         // Clamp scale to reasonable bounds for mobile
-         setPreviewScale(Math.min(0.45, Math.max(0.2, mobileScale)));
-       } else {
-         // Desktop: 60vw container logic
-         const containerWidth = w * 0.6; 
-         setPreviewScale(Math.min(0.5, (containerWidth - 100) / 1080));
-       }
+      const w = window.innerWidth;
+      if (w < 768) {
+        // Mobile: Calculate exact scale to fit width with padding
+        // Standard width is 1080px. We want some padding (e.g. 40px total).
+        const availableWidth = w - 40;
+        const mobileScale = availableWidth / 1080;
+        // Clamp scale to reasonable bounds for mobile
+        setPreviewScale(Math.min(0.45, Math.max(0.2, mobileScale)));
+      } else {
+        // Desktop: 60vw container logic
+        const containerWidth = w * 0.6;
+        setPreviewScale(Math.min(0.5, (containerWidth - 100) / 1080));
+      }
     };
     window.addEventListener('resize', handleResize);
     handleResize();
@@ -286,31 +286,31 @@ const App: React.FC = () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(currentState));
 
     if (isNavigatingHistory.current) {
-        isNavigatingHistory.current = false;
-        return;
+      isNavigatingHistory.current = false;
+      return;
     }
 
     if (debounceRef.current) clearTimeout(debounceRef.current);
-    
+
     debounceRef.current = setTimeout(() => {
-       setHistory(prev => {
-         const currentHistory = prev.slice(0, historyIndex + 1);
-         const lastState = currentHistory[currentHistory.length - 1];
-         
-         if (JSON.stringify(lastState) !== JSON.stringify(currentState)) {
-            const newHistory = [...currentHistory, currentState];
-            return newHistory;
-         }
-         return prev;
-       });
+      setHistory(prev => {
+        const currentHistory = prev.slice(0, historyIndex + 1);
+        const lastState = currentHistory[currentHistory.length - 1];
+
+        if (JSON.stringify(lastState) !== JSON.stringify(currentState)) {
+          const newHistory = [...currentHistory, currentState];
+          return newHistory;
+        }
+        return prev;
+      });
     }, 500);
 
   }, [slides, config, historyIndex]);
 
   useEffect(() => {
-     if (!isNavigatingHistory.current && history.length > 0) {
-        setHistoryIndex(history.length - 1);
-     }
+    if (!isNavigatingHistory.current && history.length > 0) {
+      setHistoryIndex(history.length - 1);
+    }
   }, [history.length]);
 
 
@@ -355,11 +355,11 @@ const App: React.FC = () => {
     try {
       const { slides: generatedSlides, themeSuggestion } = await generateSocialContent(promptText, pageCount);
       setSlides(generatedSlides);
-      
+
       if (themeSuggestion) {
         // Find best match font from our grouped list or default to Noto Sans
         const matchedFont = FONTS_GROUPED.find(f => f.value === themeSuggestion.fontFamily)?.value || 'Noto Sans TC';
-        
+
         setConfig(prev => ({
           ...prev,
           bgType: 'color',
@@ -373,7 +373,7 @@ const App: React.FC = () => {
         }));
       }
 
-      setActiveTab('content'); 
+      setActiveTab('content');
     } catch (err) {
       setErrorMsg("AI 產生失敗，請確認 API Key。");
     } finally {
@@ -386,26 +386,26 @@ const App: React.FC = () => {
   };
 
   const handleApplyPreset = (preset: typeof PRESET_STYLES[0]) => {
-     setActivePresetId(preset.id);
-     setConfig(prev => ({
-        ...prev,
-        ...preset.config,
-        // CRITICAL: Force the background type from the preset. 
-        // If the preset uses 'color', it MUST override 'image'.
-        bgType: preset.config.bgType, 
-        
-        // Preserve user specific settings like Watermark or Aspect Ratio
-        aspectRatio: prev.aspectRatio,
-        watermark: prev.watermark,
-        globalNotePosition: prev.globalNotePosition,
-        // Ensure types align for deep merge
-        titleStyle: { ...prev.titleStyle, ...preset.config.titleStyle } as any,
-        subtitleStyle: { ...prev.subtitleStyle, ...preset.config.subtitleStyle } as any,
-        bodyStyle: { ...prev.bodyStyle, ...preset.config.bodyStyle } as any,
-        noteStyle: { ...prev.noteStyle, ...preset.config.noteStyle } as any,
-        endTitleStyle: { ...prev.endTitleStyle, ...preset.config.endTitleStyle } as any,
-        endBodyStyle: { ...prev.endBodyStyle, ...preset.config.endBodyStyle } as any,
-     }));
+    setActivePresetId(preset.id);
+    setConfig(prev => ({
+      ...prev,
+      ...preset.config,
+      // CRITICAL: Force the background type from the preset. 
+      // If the preset uses 'color', it MUST override 'image'.
+      bgType: preset.config.bgType,
+
+      // Preserve user specific settings like Watermark or Aspect Ratio
+      aspectRatio: prev.aspectRatio,
+      watermark: prev.watermark,
+      globalNotePosition: prev.globalNotePosition,
+      // Ensure types align for deep merge
+      titleStyle: { ...prev.titleStyle, ...preset.config.titleStyle } as any,
+      subtitleStyle: { ...prev.subtitleStyle, ...preset.config.subtitleStyle } as any,
+      bodyStyle: { ...prev.bodyStyle, ...preset.config.bodyStyle } as any,
+      noteStyle: { ...prev.noteStyle, ...preset.config.noteStyle } as any,
+      endTitleStyle: { ...prev.endTitleStyle, ...preset.config.endTitleStyle } as any,
+      endBodyStyle: { ...prev.endBodyStyle, ...preset.config.endBodyStyle } as any,
+    }));
   };
 
   const handleApplyPalette = (palette: { bg: string, title: string, body: string }) => {
@@ -413,7 +413,7 @@ const App: React.FC = () => {
       ...prev,
       // CRITICAL: When clicking a palette color, Force bgType to 'color' 
       // so users don't get stuck with an image background hiding the color.
-      bgType: 'color', 
+      bgType: 'color',
       bgColor: palette.bg,
       titleStyle: { ...prev.titleStyle, color: palette.title },
       subtitleStyle: { ...prev.subtitleStyle, color: palette.title },
@@ -428,12 +428,12 @@ const App: React.FC = () => {
     const file = e.target.files?.[0];
     if (file) {
       const url = URL.createObjectURL(file);
-      setConfig(prev => ({ 
-        ...prev, 
-        bgType: 'image', 
+      setConfig(prev => ({
+        ...prev,
+        bgType: 'image',
         bgImage: url,
         overlayType: 'black',
-        overlayOpacity: 0.6, 
+        overlayOpacity: 0.6,
         titleStyle: { ...prev.titleStyle, color: '#FDE047' }, // Default yellow on image
         bodyStyle: { ...prev.bodyStyle, color: '#ffffff' }
       }));
@@ -441,8 +441,8 @@ const App: React.FC = () => {
   };
 
   const updateTextStyle = (
-    key: 'titleStyle' | 'subtitleStyle' | 'bodyStyle' | 'noteStyle' | 'endTitleStyle' | 'endBodyStyle', 
-    field: keyof TextStyle, 
+    key: 'titleStyle' | 'subtitleStyle' | 'bodyStyle' | 'noteStyle' | 'endTitleStyle' | 'endBodyStyle',
+    field: keyof TextStyle,
     value: any
   ) => {
     let newValue = value;
@@ -450,17 +450,17 @@ const App: React.FC = () => {
 
     // Fix: Force weight to 400 if using Dela Gothic One (Thick font) - But only set it once, allow changes
     if (field === 'fontFamily') {
-       if (value === 'Dela Gothic One') {
-         newWeight = '400';
-       }
+      if (value === 'Dela Gothic One') {
+        newWeight = '400';
+      }
     }
-    
+
     setConfig(prev => ({
       ...prev,
-      [key]: { 
-         ...prev[key], 
-         [field]: newValue,
-         ...(newWeight ? { fontWeight: newWeight } : {})
+      [key]: {
+        ...prev[key],
+        [field]: newValue,
+        ...(newWeight ? { fontWeight: newWeight } : {})
       }
     }));
   };
@@ -480,9 +480,9 @@ const App: React.FC = () => {
     }
     setConfig(prev => ({ ...prev, globalNotePosition: targetPos }));
     setSlides(prev => prev.map(s => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { notePosition, ...rest } = s;
-        return rest;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { notePosition, ...rest } = s;
+      return rest;
     }));
   };
 
@@ -518,21 +518,19 @@ const App: React.FC = () => {
 
   return (
     <div className="flex flex-col h-screen bg-slate-900 text-slate-100 overflow-hidden font-sans">
-      
+
       {/* Header */}
       <header className="h-14 border-b border-slate-700 bg-slate-950 flex items-center justify-between px-4 md:px-6 shrink-0 z-20">
         <div className="flex items-center gap-2">
-          <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-1.5 rounded-lg">
-            <Layout className="w-5 h-5 text-white" />
-          </div>
+          <img src="/icons/icon-192x192.png" className="w-8 h-8 rounded-lg object-cover" alt="SocialFlow Logo" />
           <span className="font-bold text-lg tracking-tight hidden md:inline">SocialFlow AI</span>
           <span className="font-bold text-lg tracking-tight md:hidden">SocialFlow</span>
         </div>
-        
+
         <div className="flex items-center gap-2 md:gap-4">
-          
+
           {/* Mobile Preview Toggle */}
-          <button 
+          <button
             onClick={() => setShowMobilePreview(!showMobilePreview)}
             className="md:hidden flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 text-blue-400 rounded-lg border border-slate-700 font-bold text-xs active:bg-slate-700"
           >
@@ -547,9 +545,9 @@ const App: React.FC = () => {
             <button onClick={handleRedo} disabled={historyIndex >= history.length - 1} className="p-1.5 hover:bg-slate-700 rounded text-slate-400 hover:text-white disabled:opacity-30"><Redo className="w-4 h-4" /></button>
           </div>
           <button onClick={handleReset} className="hidden md:flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800 rounded"><RotateCcw className="w-3.5 h-3.5" /><span>重置</span></button>
-          
+
           <button onClick={handleExport} disabled={isExporting} className="flex items-center gap-2 px-3 md:px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-md text-sm font-medium transition-colors disabled:opacity-50">
-            {isExporting ? <Loader2 className="w-4 h-4 animate-spin"/> : <Download className="w-4 h-4" />}
+            {isExporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
             <span className="hidden md:inline">{isExporting ? '匯出中...' : '匯出圖片'}</span>
             <span className="md:hidden">匯出</span>
           </button>
@@ -558,36 +556,35 @@ const App: React.FC = () => {
 
       {/* Main Content */}
       <div className="flex flex-1 overflow-hidden relative">
-        
+
         {/* Left Sidebar (Editor) */}
         {/* On mobile: Hidden if showMobilePreview is true. On desktop: Always visible (flex) */}
         <div className={`w-full md:w-[400px] lg:w-[450px] bg-slate-900 border-r border-slate-700 flex-col shrink-0 z-10 ${showMobilePreview ? 'hidden md:flex' : 'flex'}`}>
-          
+
           {/* Tabs */}
           <div className="flex border-b border-slate-700">
-             {[
-               { id: 'content', icon: Type, label: '內容 & AI' },
-               { id: 'design', icon: Palette, label: '風格背景' },
-               { id: 'text', icon: Settings, label: '文字細節' }
-             ].map(tab => (
-               <button
-                 key={tab.id}
-                 onClick={() => setActiveTab(tab.id as any)}
-                 className={`flex-1 py-4 flex flex-col items-center gap-1 text-xs font-medium transition-colors border-b-2 ${
-                   activeTab === tab.id 
-                     ? 'border-blue-500 text-blue-400 bg-slate-800/50' 
-                     : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/30'
-                 }`}
-               >
-                 <tab.icon className="w-5 h-5" />
-                 {tab.label}
-               </button>
-             ))}
+            {[
+              { id: 'content', icon: Type, label: '內容 & AI' },
+              { id: 'design', icon: Palette, label: '風格背景' },
+              { id: 'text', icon: Settings, label: '文字細節' }
+            ].map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id as any)}
+                className={`flex-1 py-4 flex flex-col items-center gap-1 text-xs font-medium transition-colors border-b-2 ${activeTab === tab.id
+                    ? 'border-blue-500 text-blue-400 bg-slate-800/50'
+                    : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/30'
+                  }`}
+              >
+                <tab.icon className="w-5 h-5" />
+                {tab.label}
+              </button>
+            ))}
           </div>
 
           {/* Tab Content */}
           <div className="flex-1 overflow-y-auto p-6 scrollbar-thin">
-            
+
             {/* CONTENT TAB */}
             {activeTab === 'content' && (
               <div className="space-y-8">
@@ -597,26 +594,26 @@ const App: React.FC = () => {
                     <Wand2 className="w-4 h-4" />
                     <h3 className="text-sm font-bold uppercase tracking-wider">AI 智慧小編</h3>
                   </div>
-                  
+
                   <textarea
                     className="w-full bg-slate-900 border border-slate-600 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 outline-none resize-none h-32 leading-relaxed"
                     placeholder="貼上你的講道筆記、靈修心得或文章內容..."
                     value={promptText}
                     onChange={(e) => setPromptText(e.target.value)}
                   />
-                  
+
                   <div className="flex items-center gap-4">
                     <div className="flex items-center gap-2 bg-slate-900 px-3 py-2 rounded-lg border border-slate-600">
                       <span className="text-xs text-slate-400">頁數</span>
-                      <input 
-                        type="number" 
-                        min="1" max="10" 
+                      <input
+                        type="number"
+                        min="1" max="10"
                         value={pageCount}
                         onChange={(e) => setPageCount(parseInt(e.target.value) || 1)}
                         className="w-10 bg-transparent text-center font-bold text-sm outline-none"
                       />
                     </div>
-                    <button 
+                    <button
                       onClick={handleGenerate}
                       disabled={isGenerating || !promptText}
                       className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white py-2 rounded-lg font-bold text-sm flex justify-center items-center gap-2 disabled:opacity-50 transition-all"
@@ -641,7 +638,7 @@ const App: React.FC = () => {
                           <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
-                      
+
                       <input className="w-full bg-slate-900 border border-slate-600 rounded px-2 py-1.5 text-sm font-bold focus:border-blue-500 outline-none" value={slide.title} onChange={(e) => handleUpdateSlide(slide.id, 'title', e.target.value)} placeholder="標題" />
                       <textarea className="w-full bg-slate-900 border border-slate-600 rounded px-2 py-1.5 text-sm h-20 resize-none focus:border-blue-500 outline-none" value={slide.body} onChange={(e) => handleUpdateSlide(slide.id, 'body', e.target.value)} placeholder="內文" />
                       <input className="w-full bg-slate-900 border border-slate-600 rounded px-2 py-1.5 text-xs text-slate-400 focus:border-blue-500 outline-none" value={slide.note} onChange={(e) => handleUpdateSlide(slide.id, 'note', e.target.value)} placeholder="備註 / 小字" />
@@ -657,7 +654,7 @@ const App: React.FC = () => {
             {/* DESIGN TAB */}
             {activeTab === 'design' && (
               <div className="space-y-8">
-                
+
                 {/* 1. Dimensions */}
                 <section className="space-y-3">
                   <h3 className="text-xs font-bold text-slate-400 uppercase">尺寸比例</h3>
@@ -666,11 +663,10 @@ const App: React.FC = () => {
                       <button
                         key={ratio}
                         onClick={() => setConfig(prev => ({ ...prev, aspectRatio: ratio as AspectRatio }))}
-                        className={`py-2 px-3 rounded-md text-sm font-medium border ${
-                          config.aspectRatio === ratio 
-                          ? 'bg-blue-600 border-blue-500 text-white' 
-                          : 'bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-700'
-                        }`}
+                        className={`py-2 px-3 rounded-md text-sm font-medium border ${config.aspectRatio === ratio
+                            ? 'bg-blue-600 border-blue-500 text-white'
+                            : 'bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-700'
+                          }`}
                       >
                         {ratio === '1:1' ? '正方形' : ratio === '4:5' ? 'IG貼文' : '限動'}
                       </button>
@@ -682,99 +678,95 @@ const App: React.FC = () => {
 
                 {/* 2. Frames (Moved Up) */}
                 <section className="space-y-3">
-                   <h3 className="text-xs font-bold text-slate-400 uppercase flex items-center gap-2">
-                      <Frame className="w-3 h-3" />
-                      簡約框線 (Frames)
-                   </h3>
-                   <div className="grid grid-cols-5 gap-2">
-                     {[
-                       { id: 'none', label: '無', icon: Square },
-                       { id: 'simple', label: '極簡', icon: Square },
-                       { id: 'bold', label: '粗框', icon: Square },
-                       { id: 'corners', label: '對焦', icon: Crop },
-                       { id: 'cinema', label: '電影', icon: Monitor },
-                     ].map((frame) => (
-                       <button
-                         key={frame.id}
-                         onClick={() => setConfig(prev => ({ ...prev, frameStyle: frame.id as FrameStyle }))}
-                         className={`flex flex-col items-center justify-center p-2 rounded-lg border transition-all ${
-                           config.frameStyle === frame.id
-                           ? 'bg-blue-600 border-blue-500 text-white'
-                           : 'bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-700'
-                         }`}
-                         title={frame.label}
-                       >
-                         <frame.icon className={`w-4 h-4 mb-1 ${frame.id === 'bold' ? 'stroke-[3px]' : ''}`} />
-                         <span className="text-[10px]">{frame.label}</span>
-                       </button>
-                     ))}
-                   </div>
-                   
-                   {config.frameStyle !== 'none' && (
-                     <div className="flex items-center gap-2 mt-2 bg-slate-800 p-2 rounded-lg border border-slate-700">
-                        <input type="color" value={config.frameColor} onChange={(e) => setConfig(prev => ({ ...prev, frameColor: e.target.value }))} className="w-6 h-6 rounded bg-transparent border-none cursor-pointer" />
-                        <span className="text-xs text-slate-400">框線顏色</span>
-                     </div>
-                   )}
+                  <h3 className="text-xs font-bold text-slate-400 uppercase flex items-center gap-2">
+                    <Frame className="w-3 h-3" />
+                    簡約框線 (Frames)
+                  </h3>
+                  <div className="grid grid-cols-5 gap-2">
+                    {[
+                      { id: 'none', label: '無', icon: Square },
+                      { id: 'simple', label: '極簡', icon: Square },
+                      { id: 'bold', label: '粗框', icon: Square },
+                      { id: 'corners', label: '對焦', icon: Crop },
+                      { id: 'cinema', label: '電影', icon: Monitor },
+                    ].map((frame) => (
+                      <button
+                        key={frame.id}
+                        onClick={() => setConfig(prev => ({ ...prev, frameStyle: frame.id as FrameStyle }))}
+                        className={`flex flex-col items-center justify-center p-2 rounded-lg border transition-all ${config.frameStyle === frame.id
+                            ? 'bg-blue-600 border-blue-500 text-white'
+                            : 'bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-700'
+                          }`}
+                        title={frame.label}
+                      >
+                        <frame.icon className={`w-4 h-4 mb-1 ${frame.id === 'bold' ? 'stroke-[3px]' : ''}`} />
+                        <span className="text-[10px]">{frame.label}</span>
+                      </button>
+                    ))}
+                  </div>
+
+                  {config.frameStyle !== 'none' && (
+                    <div className="flex items-center gap-2 mt-2 bg-slate-800 p-2 rounded-lg border border-slate-700">
+                      <input type="color" value={config.frameColor} onChange={(e) => setConfig(prev => ({ ...prev, frameColor: e.target.value }))} className="w-6 h-6 rounded bg-transparent border-none cursor-pointer" />
+                      <span className="text-xs text-slate-400">框線顏色</span>
+                    </div>
+                  )}
                 </section>
 
                 <hr className="border-slate-800" />
 
                 {/* 3. Global Footer Layout (Watermark & Note Position) - Moved here */}
                 <section className="space-y-4">
-                    <h3 className="text-xs font-bold text-slate-400 uppercase flex items-center gap-2">
-                        <Layout className="w-3 h-3" />
-                        頁面佈局 (Global Layout)
-                    </h3>
-                    
-                    {/* Watermark Input */}
-                    <div className="space-y-2">
-                        <label className="text-[10px] text-slate-500 uppercase font-bold flex items-center gap-1"><AtSign className="w-3 h-3"/> 帳號 / 浮水印</label>
-                        <div className="flex items-center gap-2 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2">
-                          <input className="bg-transparent w-full text-sm outline-none" placeholder="your.church.youth" value={config.watermark} onChange={(e) => setConfig(prev => ({ ...prev, watermark: e.target.value }))} />
-                        </div>
-                    </div>
+                  <h3 className="text-xs font-bold text-slate-400 uppercase flex items-center gap-2">
+                    <Layout className="w-3 h-3" />
+                    頁面佈局 (Global Layout)
+                  </h3>
 
-                    {/* Note Position Button */}
-                    <div className="flex justify-between items-center p-2 bg-slate-800/50 rounded-lg border border-slate-700/50">
-                      <span className="text-xs text-slate-400 flex items-center gap-2"><MousePointer2 className="w-3 h-3"/> 備註小字位置</span>
-                      <button onClick={syncNotePositionToAll} className="text-[10px] bg-slate-700 hover:bg-blue-600 px-3 py-1.5 rounded transition-colors text-white">套用到所有頁面</button>
+                  {/* Watermark Input */}
+                  <div className="space-y-2">
+                    <label className="text-[10px] text-slate-500 uppercase font-bold flex items-center gap-1"><AtSign className="w-3 h-3" /> 帳號 / 浮水印</label>
+                    <div className="flex items-center gap-2 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2">
+                      <input className="bg-transparent w-full text-sm outline-none" placeholder="your.church.youth" value={config.watermark} onChange={(e) => setConfig(prev => ({ ...prev, watermark: e.target.value }))} />
                     </div>
+                  </div>
+
+                  {/* Note Position Button */}
+                  <div className="flex justify-between items-center p-2 bg-slate-800/50 rounded-lg border border-slate-700/50">
+                    <span className="text-xs text-slate-400 flex items-center gap-2"><MousePointer2 className="w-3 h-3" /> 備註小字位置</span>
+                    <button onClick={syncNotePositionToAll} className="text-[10px] bg-slate-700 hover:bg-blue-600 px-3 py-1.5 rounded transition-colors text-white">套用到所有頁面</button>
+                  </div>
                 </section>
 
                 <hr className="border-slate-800" />
 
                 {/* 4. Preset Styles (Curated Vibes) */}
                 <section className="space-y-3">
-                   <h3 className="text-xs font-bold text-slate-400 uppercase flex items-center gap-2">
-                      <Sparkles className="w-3 h-3 text-yellow-400" />
-                      精選牧養風格 (Curated Vibes)
-                   </h3>
-                   <div className="grid grid-cols-2 gap-2">
-                      {PRESET_STYLES.map(style => (
-                         <button
-                           key={style.id}
-                           onClick={() => handleApplyPreset(style)}
-                           className={`flex flex-col items-start p-3 border rounded-lg group transition-all text-left ${
-                             activePresetId === style.id 
-                              ? 'bg-blue-900/20 border-blue-500' 
-                              : 'bg-slate-800 hover:bg-slate-750 border-slate-700 hover:border-blue-500'
-                           }`}
-                         >
-                            <div className="flex items-center gap-2 mb-1">
-                               <div className={`p-1.5 rounded-md transition-colors ${
-                                 activePresetId === style.id ? 'bg-blue-600 text-white' : 'bg-slate-700 text-slate-300'
-                               }`}>
-                                 <style.icon className="w-4 h-4" />
-                               </div>
-                               <span className={`text-sm font-bold ${
-                                 activePresetId === style.id ? 'text-blue-200' : 'text-slate-200'
-                               }`}>{style.name}</span>
-                            </div>
-                            <span className="text-[10px] text-slate-500 leading-tight">{style.desc}</span>
-                         </button>
-                      ))}
-                   </div>
+                  <h3 className="text-xs font-bold text-slate-400 uppercase flex items-center gap-2">
+                    <Sparkles className="w-3 h-3 text-yellow-400" />
+                    精選牧養風格 (Curated Vibes)
+                  </h3>
+                  <div className="grid grid-cols-2 gap-2">
+                    {PRESET_STYLES.map(style => (
+                      <button
+                        key={style.id}
+                        onClick={() => handleApplyPreset(style)}
+                        className={`flex flex-col items-start p-3 border rounded-lg group transition-all text-left ${activePresetId === style.id
+                            ? 'bg-blue-900/20 border-blue-500'
+                            : 'bg-slate-800 hover:bg-slate-750 border-slate-700 hover:border-blue-500'
+                          }`}
+                      >
+                        <div className="flex items-center gap-2 mb-1">
+                          <div className={`p-1.5 rounded-md transition-colors ${activePresetId === style.id ? 'bg-blue-600 text-white' : 'bg-slate-700 text-slate-300'
+                            }`}>
+                            <style.icon className="w-4 h-4" />
+                          </div>
+                          <span className={`text-sm font-bold ${activePresetId === style.id ? 'text-blue-200' : 'text-slate-200'
+                            }`}>{style.name}</span>
+                        </div>
+                        <span className="text-[10px] text-slate-500 leading-tight">{style.desc}</span>
+                      </button>
+                    ))}
+                  </div>
                 </section>
 
                 {/* 5. Style-Specific Palette Picker (Scrollable) */}
@@ -793,10 +785,10 @@ const App: React.FC = () => {
                           title={palette.label}
                         >
                           <div className="w-12 h-12 rounded-full border-2 border-slate-600 overflow-hidden relative shadow-md group-hover:scale-110 group-hover:border-blue-400 transition-all">
-                             <div className="absolute inset-0" style={{ backgroundColor: palette.bg }} />
-                             <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="w-1/2 h-1/2 rounded-full shadow-sm" style={{ backgroundColor: palette.title }} />
-                             </div>
+                            <div className="absolute inset-0" style={{ backgroundColor: palette.bg }} />
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="w-1/2 h-1/2 rounded-full shadow-sm" style={{ backgroundColor: palette.title }} />
+                            </div>
                           </div>
                           <span className="text-[10px] text-slate-400 font-medium truncate w-full text-center group-hover:text-white">{palette.label}</span>
                         </button>
@@ -809,60 +801,60 @@ const App: React.FC = () => {
 
                 {/* 6. Background */}
                 <section className="space-y-3">
-                   <h3 className="text-xs font-bold text-slate-400 uppercase">背景設定</h3>
-                   <div className="flex gap-2 bg-slate-800 p-1 rounded-lg border border-slate-700">
-                      <button onClick={() => setConfig(prev => ({ ...prev, bgType: 'color' }))} className={`flex-1 py-1.5 text-xs rounded-md ${config.bgType === 'color' ? 'bg-slate-600 text-white' : 'text-slate-400'}`}>純色</button>
-                      <button onClick={() => setConfig(prev => ({ ...prev, bgType: 'image', overlayType: prev.overlayType === 'none' ? 'black' : prev.overlayType }))} className={`flex-1 py-1.5 text-xs rounded-md ${config.bgType === 'image' ? 'bg-slate-600 text-white' : 'text-slate-400'}`}>圖片</button>
-                   </div>
+                  <h3 className="text-xs font-bold text-slate-400 uppercase">背景設定</h3>
+                  <div className="flex gap-2 bg-slate-800 p-1 rounded-lg border border-slate-700">
+                    <button onClick={() => setConfig(prev => ({ ...prev, bgType: 'color' }))} className={`flex-1 py-1.5 text-xs rounded-md ${config.bgType === 'color' ? 'bg-slate-600 text-white' : 'text-slate-400'}`}>純色</button>
+                    <button onClick={() => setConfig(prev => ({ ...prev, bgType: 'image', overlayType: prev.overlayType === 'none' ? 'black' : prev.overlayType }))} className={`flex-1 py-1.5 text-xs rounded-md ${config.bgType === 'image' ? 'bg-slate-600 text-white' : 'text-slate-400'}`}>圖片</button>
+                  </div>
 
-                   {config.bgType === 'color' ? (
-                     <div className="space-y-2">
-                       <div className="flex gap-2 items-center">
-                          <input type="color" value={config.bgColor} onChange={(e) => setConfig(prev => ({ ...prev, bgColor: e.target.value }))} className="w-10 h-10 rounded cursor-pointer bg-transparent border-none" />
-                          <span className="text-sm text-slate-400 font-mono">{config.bgColor}</span>
-                       </div>
-                     </div>
-                   ) : (
-                     <div className="space-y-4">
-                        {/* 4b. Upload */}
-                        <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-slate-700 border-dashed rounded-lg cursor-pointer bg-slate-800 hover:bg-slate-750 relative overflow-hidden group">
-                            {config.bgImage && <img src={config.bgImage} className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-40 transition-opacity" />}
-                            <div className="relative z-10 flex flex-col items-center justify-center pt-2">
-                                <Upload className="w-6 h-6 mb-1 text-slate-400" />
-                                <p className="text-xs text-slate-500">上傳背景圖片</p>
-                            </div>
-                            <input type="file" className="hidden" accept="image/*" onChange={handleImageUpload} />
-                        </label>
-                        
-                        {/* 4c. Controls */}
-                        <div className="space-y-3">
-                          <div className="space-y-1">
-                            <div className="flex justify-between">
-                              <label className="text-xs text-slate-500">遮罩濃度 (Overlay)</label>
-                              <span className="text-xs text-slate-400 font-mono">{Math.round((config.overlayOpacity || 0) * 100)}%</span>
-                            </div>
-                            <input type="range" min="0" max="1" step="0.05" value={isNaN(config.overlayOpacity) ? 0 : config.overlayOpacity} onChange={(e) => setConfig(prev => ({ ...prev, overlayOpacity: parseFloat(e.target.value) || 0, overlayType: prev.overlayType === 'none' ? 'black' : prev.overlayType }))} className="w-full h-1 bg-slate-700 rounded-lg appearance-none cursor-pointer" />
-                          </div>
+                  {config.bgType === 'color' ? (
+                    <div className="space-y-2">
+                      <div className="flex gap-2 items-center">
+                        <input type="color" value={config.bgColor} onChange={(e) => setConfig(prev => ({ ...prev, bgColor: e.target.value }))} className="w-10 h-10 rounded cursor-pointer bg-transparent border-none" />
+                        <span className="text-sm text-slate-400 font-mono">{config.bgColor}</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-4">
+                      {/* 4b. Upload */}
+                      <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-slate-700 border-dashed rounded-lg cursor-pointer bg-slate-800 hover:bg-slate-750 relative overflow-hidden group">
+                        {config.bgImage && <img src={config.bgImage} className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-40 transition-opacity" />}
+                        <div className="relative z-10 flex flex-col items-center justify-center pt-2">
+                          <Upload className="w-6 h-6 mb-1 text-slate-400" />
+                          <p className="text-xs text-slate-500">上傳背景圖片</p>
+                        </div>
+                        <input type="file" className="hidden" accept="image/*" onChange={handleImageUpload} />
+                      </label>
 
-                          <div className="space-y-1">
-                            <div className="flex justify-between">
-                              <label className="text-xs text-slate-500">背景模糊 (Blur)</label>
-                              <span className="text-xs text-slate-400 font-mono">{config.bgBlur || 0}px</span>
-                            </div>
-                            <input type="range" min="0" max="20" step="1" value={isNaN(config.bgBlur) ? 0 : config.bgBlur} onChange={(e) => setConfig(prev => ({ ...prev, bgBlur: parseInt(e.target.value) || 0 }))} className="w-full h-1 bg-slate-700 rounded-lg appearance-none cursor-pointer" />
+                      {/* 4c. Controls */}
+                      <div className="space-y-3">
+                        <div className="space-y-1">
+                          <div className="flex justify-between">
+                            <label className="text-xs text-slate-500">遮罩濃度 (Overlay)</label>
+                            <span className="text-xs text-slate-400 font-mono">{Math.round((config.overlayOpacity || 0) * 100)}%</span>
                           </div>
+                          <input type="range" min="0" max="1" step="0.05" value={isNaN(config.overlayOpacity) ? 0 : config.overlayOpacity} onChange={(e) => setConfig(prev => ({ ...prev, overlayOpacity: parseFloat(e.target.value) || 0, overlayType: prev.overlayType === 'none' ? 'black' : prev.overlayType }))} className="w-full h-1 bg-slate-700 rounded-lg appearance-none cursor-pointer" />
                         </div>
 
-                     </div>
-                   )}
+                        <div className="space-y-1">
+                          <div className="flex justify-between">
+                            <label className="text-xs text-slate-500">背景模糊 (Blur)</label>
+                            <span className="text-xs text-slate-400 font-mono">{config.bgBlur || 0}px</span>
+                          </div>
+                          <input type="range" min="0" max="20" step="1" value={isNaN(config.bgBlur) ? 0 : config.bgBlur} onChange={(e) => setConfig(prev => ({ ...prev, bgBlur: parseInt(e.target.value) || 0 }))} className="w-full h-1 bg-slate-700 rounded-lg appearance-none cursor-pointer" />
+                        </div>
+                      </div>
+
+                    </div>
+                  )}
                 </section>
-                
+
                 {/* Visual Elements Toggle */}
                 <section className="space-y-3 border-t border-slate-800 pt-3">
-                   <div className="flex items-center gap-2">
-                      <input type="checkbox" checked={config.showProgressBar} onChange={(e) => setConfig(prev => ({ ...prev, showProgressBar: e.target.checked }))} className="w-4 h-4 rounded border-slate-700 bg-slate-800" />
-                      <span className="text-sm text-slate-400">顯示閱讀進度條 (Progress Bar)</span>
-                   </div>
+                  <div className="flex items-center gap-2">
+                    <input type="checkbox" checked={config.showProgressBar} onChange={(e) => setConfig(prev => ({ ...prev, showProgressBar: e.target.checked }))} className="w-4 h-4 rounded border-slate-700 bg-slate-800" />
+                    <span className="text-sm text-slate-400">顯示閱讀進度條 (Progress Bar)</span>
+                  </div>
                 </section>
               </div>
             )}
@@ -870,7 +862,7 @@ const App: React.FC = () => {
             {/* TEXT TAB */}
             {activeTab === 'text' && (
               <div className="space-y-8">
-                
+
                 {/* NOTE: Watermark & Note Position Moved to Design Tab */}
 
                 {/* Dynamic Text Sections */}
@@ -886,22 +878,22 @@ const App: React.FC = () => {
                   const style = config[styleKey];
 
                   return (
-                  <section key={section.key} className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 shadow-sm relative overflow-hidden">
-                     <div className="flex items-center gap-2 mb-4 pb-2 border-b border-slate-700/50 text-blue-300">
+                    <section key={section.key} className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 shadow-sm relative overflow-hidden">
+                      <div className="flex items-center gap-2 mb-4 pb-2 border-b border-slate-700/50 text-blue-300">
                         <section.icon className="w-4 h-4" />
                         <h3 className="text-xs font-bold uppercase tracking-wider">{section.label}</h3>
-                     </div>
-                     
-                     <div className="grid grid-cols-2 gap-3">
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3">
                         <div className="space-y-1">
                           <label className="text-[10px] text-slate-500 uppercase font-bold">字級</label>
                           <input type="number" value={style.fontSize} onChange={(e) => updateTextStyle(styleKey, 'fontSize', safeParseInt(e.target.value))} className="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1.5 text-sm" />
                         </div>
                         <div className="space-y-1">
                           <label className="text-[10px] text-slate-500 uppercase font-bold">粗細</label>
-                          <select 
-                            value={style.fontWeight} 
-                            onChange={(e) => updateTextStyle(styleKey, 'fontWeight', e.target.value)} 
+                          <select
+                            value={style.fontWeight}
+                            onChange={(e) => updateTextStyle(styleKey, 'fontWeight', e.target.value)}
                             className="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1.5 text-sm"
                           >
                             <option value="400">一般 (Regular)</option>
@@ -910,29 +902,29 @@ const App: React.FC = () => {
                             <option value="900">特粗 (Black)</option>
                           </select>
                         </div>
-                     </div>
+                      </div>
 
-                     {/* ADDED LINE HEIGHT CONTROL HERE */}
-                     <div className="space-y-1 mt-3">
+                      {/* ADDED LINE HEIGHT CONTROL HERE */}
+                      <div className="space-y-1 mt-3">
                         <div className="flex justify-between items-center mb-1">
-                           <label className="text-[10px] text-slate-500 uppercase font-bold">行距 (Line Height)</label>
-                           <span className="text-[10px] text-slate-400 font-mono bg-slate-900 px-1.5 py-0.5 rounded border border-slate-700">{style.lineHeight || 1.2}</span>
+                          <label className="text-[10px] text-slate-500 uppercase font-bold">行距 (Line Height)</label>
+                          <span className="text-[10px] text-slate-400 font-mono bg-slate-900 px-1.5 py-0.5 rounded border border-slate-700">{style.lineHeight || 1.2}</span>
                         </div>
-                        <input 
-                           type="range" 
-                           min="0.8" 
-                           max="2.5" 
-                           step="0.1" 
-                           value={style.lineHeight || 1.2} 
-                           onChange={(e) => updateTextStyle(styleKey, 'lineHeight', parseFloat(e.target.value))} 
-                           className="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500" 
+                        <input
+                          type="range"
+                          min="0.8"
+                          max="2.5"
+                          step="0.1"
+                          value={style.lineHeight || 1.2}
+                          onChange={(e) => updateTextStyle(styleKey, 'lineHeight', parseFloat(e.target.value))}
+                          className="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500"
                         />
-                     </div>
+                      </div>
 
-                     {/* Font Family Selector (Updated Grouping) */}
-                     <div className="space-y-1 mt-3">
+                      {/* Font Family Selector (Updated Grouping) */}
+                      <div className="space-y-1 mt-3">
                         <label className="text-[10px] text-slate-500 uppercase font-bold">字體選擇</label>
-                        <select 
+                        <select
                           value={style.fontFamily}
                           onChange={(e) => updateTextStyle(styleKey, 'fontFamily', e.target.value)}
                           className="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1.5 text-sm"
@@ -941,9 +933,9 @@ const App: React.FC = () => {
                             <option key={font.value} value={font.value}>{font.label}</option>
                           ))}
                         </select>
-                     </div>
+                      </div>
 
-                     <div className="space-y-1 mt-3">
+                      <div className="space-y-1 mt-3">
                         <label className="text-[10px] text-slate-500 uppercase font-bold">對齊</label>
                         <div className="flex bg-slate-900 border border-slate-700 rounded overflow-hidden">
                           {[{ value: 'left', icon: AlignLeft }, { value: 'center', icon: AlignCenter }, { value: 'right', icon: AlignRight }].map((opt) => (
@@ -952,22 +944,23 @@ const App: React.FC = () => {
                             </button>
                           ))}
                         </div>
-                     </div>
+                      </div>
 
-                     <div className="flex items-center gap-2 mt-3 pt-2 border-t border-slate-700/50">
+                      <div className="flex items-center gap-2 mt-3 pt-2 border-t border-slate-700/50">
                         <input type="color" value={style.color} onChange={(e) => updateTextStyle(styleKey, 'color', e.target.value)} className="w-8 h-8 rounded bg-transparent border-none cursor-pointer" />
                         <span className="text-xs text-slate-400">文字顏色</span>
-                        
+
                         <div className="w-px h-4 bg-slate-700 mx-2"></div>
-                        
+
                         <input type="checkbox" checked={style.enableShadow || false} onChange={(e) => updateTextStyle(styleKey, 'enableShadow', e.target.checked)} className="w-4 h-4 rounded border-slate-700 bg-slate-800" />
                         <span className="text-xs text-slate-400">陰影</span>
 
                         <input type="checkbox" checked={style.hasBackground || false} onChange={(e) => updateTextStyle(styleKey, 'hasBackground', e.target.checked)} className="w-4 h-4 rounded border-slate-700 bg-slate-800 ml-2" />
                         <span className="text-xs text-slate-400">底色塊</span>
-                     </div>
-                  </section>
-                )})}
+                      </div>
+                    </section>
+                  )
+                })}
               </div>
             )}
 
@@ -977,33 +970,33 @@ const App: React.FC = () => {
         {/* Right Area (Canvas / Preview) */}
         {/* On mobile: Visible if showMobilePreview is true. On desktop: Always visible (flex-1) */}
         <div className={`flex-1 bg-slate-950 relative flex-col items-center justify-center overflow-hidden ${showMobilePreview ? 'flex' : 'hidden md:flex'}`}>
-          
+
           <div className="absolute top-4 right-4 z-20 bg-slate-900/80 backdrop-blur px-1 py-1 rounded-full border border-slate-700 text-xs text-slate-400 flex items-center gap-2">
-             <button onClick={() => setPreviewScale(Math.max(0.1, previewScale - 0.1))} className="p-1 hover:bg-slate-700 rounded-full"><Minus className="w-3 h-3" /></button>
-             <span className="min-w-[3rem] text-center font-mono">{Math.round(previewScale * 100)}%</span>
-             <button onClick={() => setPreviewScale(Math.min(1.5, previewScale + 0.1))} className="p-1 hover:bg-slate-700 rounded-full"><Plus className="w-3 h-3" /></button>
+            <button onClick={() => setPreviewScale(Math.max(0.1, previewScale - 0.1))} className="p-1 hover:bg-slate-700 rounded-full"><Minus className="w-3 h-3" /></button>
+            <span className="min-w-[3rem] text-center font-mono">{Math.round(previewScale * 100)}%</span>
+            <button onClick={() => setPreviewScale(Math.min(1.5, previewScale + 0.1))} className="p-1 hover:bg-slate-700 rounded-full"><Plus className="w-3 h-3" /></button>
           </div>
 
           <div ref={scrollContainerRef} className="w-full h-full overflow-x-auto overflow-y-hidden flex items-center px-10 md:px-20 gap-4 md:gap-8 scrollbar-thin select-none">
-             {slides.map((slide, i) => (
-               <SlideRenderer key={slide.id} slide={slide} config={config} scale={previewScale} isEditable={true} onNoteDragEnd={handleNoteDragEnd} index={i} totalSlides={slides.length} />
-             ))}
-             <div className="w-10 shrink-0" />
+            {slides.map((slide, i) => (
+              <SlideRenderer key={slide.id} slide={slide} config={config} scale={previewScale} isEditable={true} onNoteDragEnd={handleNoteDragEnd} index={i} totalSlides={slides.length} />
+            ))}
+            <div className="w-10 shrink-0" />
           </div>
-          
+
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-slate-900/90 backdrop-blur px-4 py-2 rounded-full border border-slate-700 z-10">
-             <button onClick={() => scrollContainerRef.current?.scrollBy({ left: -300, behavior: 'smooth' })} className="p-2 hover:bg-slate-700 rounded-full"><ChevronLeft className="w-5 h-5" /></button>
-             <span className="text-xs font-mono text-slate-400">{slides.length} SLIDES</span>
-             <button onClick={() => scrollContainerRef.current?.scrollBy({ left: 300, behavior: 'smooth' })} className="p-2 hover:bg-slate-700 rounded-full"><ChevronRight className="w-5 h-5" /></button>
+            <button onClick={() => scrollContainerRef.current?.scrollBy({ left: -300, behavior: 'smooth' })} className="p-2 hover:bg-slate-700 rounded-full"><ChevronLeft className="w-5 h-5" /></button>
+            <span className="text-xs font-mono text-slate-400">{slides.length} SLIDES</span>
+            <button onClick={() => scrollContainerRef.current?.scrollBy({ left: 300, behavior: 'smooth' })} className="p-2 hover:bg-slate-700 rounded-full"><ChevronRight className="w-5 h-5" /></button>
           </div>
         </div>
       </div>
-      
+
       {/* Hidden Container for high-res export */}
       <div style={{ position: 'fixed', top: 0, left: -99999, pointerEvents: 'none', display: 'flex' }}>
-         {slides.map((slide, i) => (
-            <SlideRenderer key={`export-${slide.id}`} id={`export-slide-${slide.id}`} slide={slide} config={config} scale={1} index={i} totalSlides={slides.length} />
-         ))}
+        {slides.map((slide, i) => (
+          <SlideRenderer key={`export-${slide.id}`} id={`export-slide-${slide.id}`} slide={slide} config={config} scale={1} index={i} totalSlides={slides.length} />
+        ))}
       </div>
     </div>
   );
