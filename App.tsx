@@ -626,12 +626,12 @@ const App: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`flex-1 py-4 flex flex-col items-center gap-1 text-xs font-medium transition-colors border-b-2 ${activeTab === tab.id
+                className={`flex-1 py-4 flex flex-col items-center gap-1.5 text-sm font-bold transition-colors border-b-2 ${activeTab === tab.id
                   ? 'border-blue-500 text-blue-400 bg-slate-800/50'
                   : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/30'
                   }`}
               >
-                <tab.icon className="w-5 h-5" />
+                <tab.icon className="w-5 h-5 mb-0.5" />
                 {tab.label}
               </button>
             ))}
@@ -647,7 +647,7 @@ const App: React.FC = () => {
                 <div className="bg-slate-800 p-4 rounded-xl border border-slate-700 space-y-4">
                   <div className="flex items-center gap-2 text-blue-400 mb-2">
                     <Wand2 className="w-4 h-4" />
-                    <h3 className="text-sm font-bold uppercase tracking-wider">AI 智慧小編</h3>
+                    <h3 className="text-sm font-black uppercase tracking-widest">AI 智慧小編</h3>
                   </div>
 
                   <textarea
@@ -659,13 +659,13 @@ const App: React.FC = () => {
 
                   <div className="flex items-center gap-4">
                     <div className="flex items-center gap-2 bg-slate-900 px-3 py-2 rounded-lg border border-slate-600">
-                      <span className="text-xs text-slate-400">頁數</span>
+                      <span className="text-sm text-slate-400">頁數</span>
                       <input
                         type="number"
                         min="1" max="10"
                         value={pageCount}
                         onChange={(e) => setPageCount(parseInt(e.target.value) || 1)}
-                        className="w-10 bg-transparent text-center font-bold text-sm outline-none"
+                        className="w-12 bg-transparent text-center font-bold text-base outline-none"
                       />
                     </div>
                     <button
@@ -686,7 +686,7 @@ const App: React.FC = () => {
                   {slides.map((slide, idx) => (
                     <div key={slide.id} className="bg-slate-800 border border-slate-700 rounded-lg p-3 space-y-3 group hover:border-slate-600 transition-colors">
                       <div className="flex justify-between items-center">
-                        <span className="text-xs font-bold text-slate-500 group-hover:text-blue-400">
+                        <span className="text-sm font-black text-slate-500 group-hover:text-blue-400">
                           {slide.type === 'cover' ? '封面 (Hook)' : slide.type === 'end' ? '結尾 (CTA)' : `第 ${idx + 1} 頁`}
                         </span>
                         <button onClick={() => { const newSlides = [...slides]; newSlides.splice(idx, 1); setSlides(newSlides); }} className="text-slate-500 hover:text-red-400">
@@ -694,9 +694,9 @@ const App: React.FC = () => {
                         </button>
                       </div>
 
-                      <input className="w-full bg-slate-900 border border-slate-600 rounded px-2 py-1.5 text-sm font-bold focus:border-blue-500 outline-none" value={slide.title} onChange={(e) => handleUpdateSlide(slide.id, 'title', e.target.value)} placeholder="標題" />
-                      <textarea className="w-full bg-slate-900 border border-slate-600 rounded px-2 py-1.5 text-sm h-20 resize-none focus:border-blue-500 outline-none" value={slide.body} onChange={(e) => handleUpdateSlide(slide.id, 'body', e.target.value)} placeholder="內文" />
-                      <input className="w-full bg-slate-900 border border-slate-600 rounded px-2 py-1.5 text-xs text-slate-400 focus:border-blue-500 outline-none" value={slide.note} onChange={(e) => handleUpdateSlide(slide.id, 'note', e.target.value)} placeholder="備註 / 小字" />
+                      <input className="w-full bg-slate-900 border border-slate-600 rounded px-2.5 py-2 text-sm font-bold focus:border-blue-500 outline-none" value={slide.title} onChange={(e) => handleUpdateSlide(slide.id, 'title', e.target.value)} placeholder="標題" />
+                      <textarea className="w-full bg-slate-900 border border-slate-600 rounded px-2.5 py-2 text-sm h-20 resize-none focus:border-blue-500 outline-none leading-relaxed" value={slide.body} onChange={(e) => handleUpdateSlide(slide.id, 'body', e.target.value)} placeholder="內文" />
+                      <input className="w-full bg-slate-900 border border-slate-600 rounded px-2.5 py-2 text-sm text-slate-400 focus:border-blue-500 outline-none" value={slide.note} onChange={(e) => handleUpdateSlide(slide.id, 'note', e.target.value)} placeholder="備註 / 小字" />
                     </div>
                   ))}
                   <button onClick={() => setSlides([...slides, { id: Date.now().toString(), type: 'content', title: '新標題', body: '新內容', note: 'New' }])} className="w-full py-3 border border-dashed border-slate-600 rounded-lg text-slate-400 hover:text-blue-400 hover:border-blue-500 transition-colors flex justify-center items-center gap-2 text-sm">
@@ -712,7 +712,7 @@ const App: React.FC = () => {
 
                 {/* 1. Dimensions */}
                 <section className="space-y-3">
-                  <h3 className="text-xs font-bold text-slate-400 uppercase">尺寸比例</h3>
+                  <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest">尺寸比例</h3>
                   <div className="grid grid-cols-3 gap-2">
                     {['1:1', '4:5', '9:16'].map((ratio) => (
                       <button
@@ -733,9 +733,9 @@ const App: React.FC = () => {
 
                 {/* 2. Frames (Moved Up) */}
                 <section className="space-y-3">
-                  <h3 className="text-xs font-bold text-slate-400 uppercase flex items-center gap-2">
-                    <Frame className="w-3 h-3" />
-                    簡約框線 (Frames)
+                  <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                    <Frame className="w-4 h-4 text-blue-400" />
+                    簡約框線
                   </h3>
                   <div className="grid grid-cols-5 gap-2">
                     {[
@@ -754,8 +754,8 @@ const App: React.FC = () => {
                           }`}
                         title={frame.label}
                       >
-                        <frame.icon className={`w-4 h-4 mb-1 ${frame.id === 'bold' ? 'stroke-[3px]' : ''}`} />
-                        <span className="text-[10px]">{frame.label}</span>
+                        <frame.icon className={`w-5 h-5 mb-1 ${frame.id === 'bold' ? 'stroke-[3px]' : ''}`} />
+                        <span className="text-xs font-medium">{frame.label}</span>
                       </button>
                     ))}
                   </div>
@@ -772,23 +772,23 @@ const App: React.FC = () => {
 
                 {/* 3. Global Footer Layout (Watermark & Note Position) - Moved here */}
                 <section className="space-y-4">
-                  <h3 className="text-xs font-bold text-slate-400 uppercase flex items-center gap-2">
-                    <Layout className="w-3 h-3" />
-                    頁面佈局 (Global Layout)
+                  <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                    <Layout className="w-4 h-4 text-blue-400" />
+                    頁面佈局
                   </h3>
 
                   {/* Watermark Input */}
                   <div className="space-y-2">
-                    <label className="text-[10px] text-slate-500 uppercase font-bold flex items-center gap-1"><AtSign className="w-3 h-3" /> 帳號 / 浮水印</label>
+                    <label className="text-xs text-slate-500 uppercase font-black flex items-center gap-1"><AtSign className="w-3 h-3" /> 帳號 / 浮水印</label>
                     <div className="flex items-center gap-2 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2">
                       <input className="bg-transparent w-full text-sm outline-none" placeholder="your.church.youth" value={config.watermark} onChange={(e) => setConfig(prev => ({ ...prev, watermark: e.target.value }))} />
                     </div>
                   </div>
 
                   {/* Note Position Button */}
-                  <div className="flex justify-between items-center p-2 bg-slate-800/50 rounded-lg border border-slate-700/50">
-                    <span className="text-xs text-slate-400 flex items-center gap-2"><MousePointer2 className="w-3 h-3" /> 備註小字位置</span>
-                    <button onClick={syncNotePositionToAll} className="text-[10px] bg-slate-700 hover:bg-blue-600 px-3 py-1.5 rounded transition-colors text-white">套用到所有頁面</button>
+                  <div className="flex justify-between items-center p-3 bg-slate-800/50 rounded-lg border border-slate-700/50">
+                    <span className="text-sm text-slate-400 flex items-center gap-2"><MousePointer2 className="w-4 h-4" /> 備註小字位置</span>
+                    <button onClick={syncNotePositionToAll} className="text-xs font-bold bg-slate-700 hover:bg-blue-600 px-3 py-2 rounded transition-colors text-white whitespace-nowrap">套用到所有頁面</button>
                   </div>
                 </section>
 
@@ -796,10 +796,11 @@ const App: React.FC = () => {
 
                 {/* 4. Preset Styles (Curated Vibes) */}
                 <section className="space-y-3">
-                  <h3 className="text-xs font-bold text-slate-400 uppercase flex items-center gap-2">
-                    <Sparkles className="w-3 h-3 text-yellow-400" />
-                    精選牧養風格 (Curated Vibes)
+                  <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-yellow-400" />
+                    配色方案
                   </h3>
+                  <p className="text-xs text-slate-500 font-medium ml-6">精選牧養風格 (Curated Vibes)</p>
                   <div className="grid grid-cols-2 gap-2">
                     {PRESET_STYLES.map(style => (
                       <button
@@ -815,10 +816,10 @@ const App: React.FC = () => {
                             }`}>
                             <style.icon className="w-4 h-4" />
                           </div>
-                          <span className={`text-sm font-bold ${activePresetId === style.id ? 'text-blue-200' : 'text-slate-200'
+                          <span className={`text-sm font-black tracking-tight ${activePresetId === style.id ? 'text-blue-200' : 'text-slate-200'
                             }`}>{style.name}</span>
                         </div>
-                        <span className="text-[10px] text-slate-500 leading-tight">{style.desc}</span>
+                        <span className="text-xs text-slate-500 leading-tight font-medium">{style.desc}</span>
                       </button>
                     ))}
                   </div>
@@ -826,9 +827,9 @@ const App: React.FC = () => {
 
                 {/* 5. Style-Specific Palette Picker (Scrollable) */}
                 {activePresetId && (
-                  <section className="space-y-3 bg-slate-800/50 p-3 rounded-lg border border-slate-700/50">
-                    <h3 className="text-xs font-bold text-slate-400 uppercase flex items-center gap-2">
-                      <Palette className="w-3 h-3" />
+                  <section className="space-y-3 bg-slate-800/50 p-4 rounded-lg border border-slate-700/50">
+                    <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                      <Palette className="w-4 h-4 text-blue-400" />
                       {PRESET_STYLES.find(p => p.id === activePresetId)?.name} 專屬配色
                     </h3>
                     <div className="flex overflow-x-auto gap-3 pb-2 snap-x">
@@ -845,7 +846,7 @@ const App: React.FC = () => {
                               <div className="w-1/2 h-1/2 rounded-full shadow-sm" style={{ backgroundColor: palette.title }} />
                             </div>
                           </div>
-                          <span className="text-[10px] text-slate-400 font-medium truncate w-full text-center group-hover:text-white">{palette.label}</span>
+                          <span className="text-xs text-slate-400 font-bold truncate w-full text-center group-hover:text-white">{palette.label}</span>
                         </button>
                       ))}
                     </div>
@@ -856,10 +857,10 @@ const App: React.FC = () => {
 
                 {/* 6. Background */}
                 <section className="space-y-3">
-                  <h3 className="text-xs font-bold text-slate-400 uppercase">背景設定</h3>
+                  <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest">背景設定</h3>
                   <div className="flex gap-2 bg-slate-800 p-1 rounded-lg border border-slate-700">
-                    <button onClick={() => setConfig(prev => ({ ...prev, bgType: 'color' }))} className={`flex-1 py-1.5 text-xs rounded-md ${config.bgType === 'color' ? 'bg-slate-600 text-white' : 'text-slate-400'}`}>純色</button>
-                    <button onClick={() => setConfig(prev => ({ ...prev, bgType: 'image', overlayType: prev.overlayType === 'none' ? 'black' : prev.overlayType }))} className={`flex-1 py-1.5 text-xs rounded-md ${config.bgType === 'image' ? 'bg-slate-600 text-white' : 'text-slate-400'}`}>圖片</button>
+                    <button onClick={() => setConfig(prev => ({ ...prev, bgType: 'color' }))} className={`flex-1 py-2 text-sm font-bold rounded-md ${config.bgType === 'color' ? 'bg-slate-600 text-white' : 'text-slate-400'}`}>純色</button>
+                    <button onClick={() => setConfig(prev => ({ ...prev, bgType: 'image', overlayType: prev.overlayType === 'none' ? 'black' : prev.overlayType }))} className={`flex-1 py-2 text-sm font-bold rounded-md ${config.bgType === 'image' ? 'bg-slate-600 text-white' : 'text-slate-400'}`}>圖片</button>
                   </div>
 
                   {config.bgType === 'color' ? (
@@ -936,20 +937,20 @@ const App: React.FC = () => {
                     <section key={section.key} className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 shadow-sm relative overflow-hidden">
                       <div className="flex items-center gap-2 mb-4 pb-2 border-b border-slate-700/50 text-blue-300">
                         <section.icon className="w-4 h-4" />
-                        <h3 className="text-xs font-bold uppercase tracking-wider">{section.label}</h3>
+                        <h3 className="text-sm font-black uppercase tracking-widest">{section.label}</h3>
                       </div>
 
                       <div className="grid grid-cols-2 gap-3">
-                        <div className="space-y-1">
-                          <label className="text-[10px] text-slate-500 uppercase font-bold">字級</label>
-                          <input type="number" value={style.fontSize} onChange={(e) => updateTextStyle(styleKey, 'fontSize', safeParseInt(e.target.value))} className="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1.5 text-sm" />
+                        <div className="space-y-1.5">
+                          <label className="text-xs text-slate-500 uppercase font-black">字級</label>
+                          <input type="number" value={style.fontSize} onChange={(e) => updateTextStyle(styleKey, 'fontSize', safeParseInt(e.target.value))} className="w-full bg-slate-900 border border-slate-700 rounded px-2.5 py-2 text-sm font-bold" />
                         </div>
-                        <div className="space-y-1">
-                          <label className="text-[10px] text-slate-500 uppercase font-bold">粗細</label>
+                        <div className="space-y-1.5">
+                          <label className="text-xs text-slate-500 uppercase font-black">粗細</label>
                           <select
                             value={style.fontWeight}
                             onChange={(e) => updateTextStyle(styleKey, 'fontWeight', e.target.value)}
-                            className="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1.5 text-sm"
+                            className="w-full bg-slate-900 border border-slate-700 rounded px-2.5 py-2 text-sm font-bold"
                           >
                             <option value="400">一般 (Regular)</option>
                             <option value="500">中黑 (Medium)</option>
@@ -960,10 +961,10 @@ const App: React.FC = () => {
                       </div>
 
                       {/* ADDED LINE HEIGHT CONTROL HERE */}
-                      <div className="space-y-1 mt-3">
+                      <div className="space-y-2 mt-4">
                         <div className="flex justify-between items-center mb-1">
-                          <label className="text-[10px] text-slate-500 uppercase font-bold">行距 (Line Height)</label>
-                          <span className="text-[10px] text-slate-400 font-mono bg-slate-900 px-1.5 py-0.5 rounded border border-slate-700">{style.lineHeight || 1.2}</span>
+                          <label className="text-xs text-slate-500 uppercase font-black">行距 (Line Height)</label>
+                          <span className="text-xs text-slate-400 font-black bg-slate-900 px-2 py-1 rounded border border-slate-700">{style.lineHeight || 1.2}</span>
                         </div>
                         <input
                           type="range"
@@ -977,12 +978,12 @@ const App: React.FC = () => {
                       </div>
 
                       {/* Font Family Selector (Updated Grouping) */}
-                      <div className="space-y-1 mt-3">
-                        <label className="text-[10px] text-slate-500 uppercase font-bold">字體選擇</label>
+                      <div className="space-y-2 mt-4">
+                        <label className="text-xs text-slate-500 uppercase font-black">字體選擇</label>
                         <select
                           value={style.fontFamily}
                           onChange={(e) => updateTextStyle(styleKey, 'fontFamily', e.target.value)}
-                          className="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1.5 text-sm"
+                          className="w-full bg-slate-900 border border-slate-700 rounded px-2.5 py-2 text-sm font-bold"
                         >
                           {FONTS_GROUPED.map((font) => (
                             <option key={font.value} value={font.value}>{font.label}</option>
@@ -990,8 +991,8 @@ const App: React.FC = () => {
                         </select>
                       </div>
 
-                      <div className="space-y-1 mt-3">
-                        <label className="text-[10px] text-slate-500 uppercase font-bold">對齊</label>
+                      <div className="space-y-2 mt-4">
+                        <label className="text-xs text-slate-500 uppercase font-black">對齊</label>
                         <div className="flex bg-slate-900 border border-slate-700 rounded overflow-hidden">
                           {[{ value: 'left', icon: AlignLeft }, { value: 'center', icon: AlignCenter }, { value: 'right', icon: AlignRight }].map((opt) => (
                             <button key={opt.value} onClick={() => updateTextStyle(styleKey, 'textAlign', opt.value)} className={`flex-1 py-1.5 flex justify-center hover:bg-slate-800 transition-colors ${style.textAlign === opt.value ? 'bg-slate-700 text-white' : 'text-slate-400'}`}>
@@ -1054,100 +1055,102 @@ const App: React.FC = () => {
         ))}
       </div>
       {/* Export Modal */}
-      {showExportModal && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+      {
+        showExportModal && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+            <div className="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
 
-            {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 border-b border-slate-700 bg-slate-950">
-              <div className="flex items-center gap-3">
-                <div className="bg-blue-600 p-2 rounded-lg">
-                  <Download className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-white">匯出貼文圖集</h3>
-                  <p className="text-xs text-slate-400">
-                    {isExporting ? `正在生成圖片... ${exportProgress}%` : `已完成 ${exportedImages.length} 張圖片`}
-                  </p>
-                </div>
-              </div>
-              <button
-                onClick={() => !isExporting && setShowExportModal(false)}
-                className="p-2 hover:bg-slate-800 rounded-full transition-colors"
-                disabled={isExporting}
-              >
-                <X className="w-6 h-6 text-slate-400" />
-              </button>
-            </div>
-
-            {/* Modal Body */}
-            <div className="flex-1 overflow-y-auto p-4 md:p-6 bg-slate-900/50">
-              {isExporting ? (
-                <div className="flex flex-col items-center justify-center h-64 space-y-6">
-                  <div className="relative w-24 h-24">
-                    <div className="absolute inset-0 border-4 border-slate-700 rounded-full"></div>
-                    <div
-                      className="absolute inset-0 border-4 border-blue-500 rounded-full border-t-transparent animate-spin"
-                      style={{ animationDuration: '1s' }}
-                    ></div>
-                    <div className="absolute inset-0 flex items-center justify-center font-bold text-xl">
-                      {exportProgress}%
-                    </div>
+              {/* Modal Header */}
+              <div className="flex items-center justify-between p-4 border-b border-slate-700 bg-slate-950">
+                <div className="flex items-center gap-3">
+                  <div className="bg-blue-600 p-2 rounded-lg">
+                    <Download className="w-5 h-5 text-white" />
                   </div>
-                  <div className="text-center space-y-1">
-                    <p className="font-medium text-slate-200">處理每一張精彩的幻燈片...</p>
-                    <p className="text-xs text-slate-500">請勿關閉視窗，這需要一點時間來確保最高畫質</p>
+                  <div>
+                    <h3 className="font-bold text-white">匯出貼文圖集</h3>
+                    <p className="text-xs text-slate-400">
+                      {isExporting ? `正在生成圖片... ${exportProgress}%` : `已完成 ${exportedImages.length} 張圖片`}
+                    </p>
                   </div>
                 </div>
-              ) : (
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                  {exportedImages.map((img, idx) => (
-                    <div key={idx} className="group relative flex flex-col space-y-2 bg-slate-800 rounded-xl p-2 border border-slate-700 hover:border-blue-500 transition-all shadow-lg overflow-hidden">
-                      <div className="aspect-[4/5] overflow-hidden rounded-lg bg-slate-950 flex items-center justify-center">
-                        <img src={img} className="w-full h-full object-contain" alt={`Slide ${idx + 1}`} />
-                      </div>
-                      <div className="flex items-center justify-between px-1">
-                        <span className="text-[10px] font-bold text-slate-500">Slide {idx + 1}</span>
-                        <button
-                          onClick={() => handleShareImage(img, idx)}
-                          className="p-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md transition-colors flex items-center gap-1 text-[10px] font-bold"
-                        >
-                          <Share2 className="w-3 h-3" />
-                          {navigator.share ? '儲存' : '下載'}
-                        </button>
+                <button
+                  onClick={() => !isExporting && setShowExportModal(false)}
+                  className="p-2 hover:bg-slate-800 rounded-full transition-colors"
+                  disabled={isExporting}
+                >
+                  <X className="w-6 h-6 text-slate-400" />
+                </button>
+              </div>
+
+              {/* Modal Body */}
+              <div className="flex-1 overflow-y-auto p-4 md:p-6 bg-slate-900/50">
+                {isExporting ? (
+                  <div className="flex flex-col items-center justify-center h-64 space-y-6">
+                    <div className="relative w-24 h-24">
+                      <div className="absolute inset-0 border-4 border-slate-700 rounded-full"></div>
+                      <div
+                        className="absolute inset-0 border-4 border-blue-500 rounded-full border-t-transparent animate-spin"
+                        style={{ animationDuration: '1s' }}
+                      ></div>
+                      <div className="absolute inset-0 flex items-center justify-center font-bold text-xl">
+                        {exportProgress}%
                       </div>
                     </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Modal Footer */}
-            <div className="p-4 border-t border-slate-700 bg-slate-950 flex flex-col md:flex-row gap-3 items-center justify-between">
-              <div className="text-xs text-slate-500 hidden md:block">
-                <span className="text-blue-400 font-bold">提示：</span>
-                手機用戶點擊「儲存」後，在選單中按「儲存影像」即可存入照片 App。
+                    <div className="text-center space-y-1">
+                      <p className="font-medium text-slate-200">處理每一張精彩的幻燈片...</p>
+                      <p className="text-xs text-slate-500">請勿關閉視窗，這需要一點時間來確保最高畫質</p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    {exportedImages.map((img, idx) => (
+                      <div key={idx} className="group relative flex flex-col space-y-2 bg-slate-800 rounded-xl p-2 border border-slate-700 hover:border-blue-500 transition-all shadow-lg overflow-hidden">
+                        <div className="aspect-[4/5] overflow-hidden rounded-lg bg-slate-950 flex items-center justify-center">
+                          <img src={img} className="w-full h-full object-contain" alt={`Slide ${idx + 1}`} />
+                        </div>
+                        <div className="flex items-center justify-between px-1">
+                          <span className="text-[10px] font-bold text-slate-500">Slide {idx + 1}</span>
+                          <button
+                            onClick={() => handleShareImage(img, idx)}
+                            className="p-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md transition-colors flex items-center gap-1 text-[10px] font-bold"
+                          >
+                            <Share2 className="w-3 h-3" />
+                            {navigator.share ? '儲存' : '下載'}
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
-              <div className="flex w-full md:w-auto gap-3">
-                <button
-                  onClick={() => setShowExportModal(false)}
-                  className="flex-1 md:flex-none px-6 py-2.5 border border-slate-700 rounded-xl text-sm font-medium hover:bg-slate-800 text-slate-300 transition-colors"
-                >
-                  關閉
-                </button>
-                <button
-                  onClick={downloadAllAsZip}
-                  disabled={isExporting || exportedImages.length === 0}
-                  className="flex-1 md:flex-none px-6 py-2.5 bg-white text-slate-950 rounded-xl text-sm font-bold hover:bg-slate-200 transition-all shadow-lg flex items-center justify-center gap-2"
-                >
-                  <FileArchive className="w-4 h-4" />
-                  全部下載 (ZIP)
-                </button>
+
+              {/* Modal Footer */}
+              <div className="p-4 border-t border-slate-700 bg-slate-950 flex flex-col md:flex-row gap-3 items-center justify-between">
+                <div className="text-xs text-slate-500 hidden md:block">
+                  <span className="text-blue-400 font-bold">提示：</span>
+                  手機用戶點擊「儲存」後，在選單中按「儲存影像」即可存入照片 App。
+                </div>
+                <div className="flex w-full md:w-auto gap-3">
+                  <button
+                    onClick={() => setShowExportModal(false)}
+                    className="flex-1 md:flex-none px-6 py-2.5 border border-slate-700 rounded-xl text-sm font-medium hover:bg-slate-800 text-slate-300 transition-colors"
+                  >
+                    關閉
+                  </button>
+                  <button
+                    onClick={downloadAllAsZip}
+                    disabled={isExporting || exportedImages.length === 0}
+                    className="flex-1 md:flex-none px-6 py-2.5 bg-white text-slate-950 rounded-xl text-sm font-bold hover:bg-slate-200 transition-all shadow-lg flex items-center justify-center gap-2"
+                  >
+                    <FileArchive className="w-4 h-4" />
+                    全部下載 (ZIP)
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )
+      }
 
       {/* Hidden Export Slides Container (High Resolution) */}
       <div className="fixed top-[-9999px] left-[-9999px] pointer-events-none opacity-0">
@@ -1163,7 +1166,7 @@ const App: React.FC = () => {
           </div>
         ))}
       </div>
-    </div>
+    </div >
   );
 };
 
