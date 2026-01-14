@@ -8,9 +8,10 @@ import {
   AtSign, ZoomIn, ZoomOut, Minus, Loader2, MousePointer2, Type as TypeIcon,
   Heading, FileText, StickyNote, Flag, ListStart, RefreshCw, Dices, Shuffle,
   Sparkles, Coffee, Zap, Feather, BookOpen, Camera, Gamepad2, Grid, Layers, Frame, Square, Crop, Monitor,
-  Eye, Edit3
+  Eye, Edit3, Share2, X, CheckCircle2, FileArchive
 } from 'lucide-react';
 import html2canvas from 'html2canvas';
+import JSZip from 'jszip';
 import { DesignConfig, SlideContent, AspectRatio, TextStyle, FontFamily, FrameStyle } from './types';
 import { DEFAULT_DESIGN, INITIAL_SLIDES } from './constants';
 import SlideRenderer from './components/SlideRenderer';
@@ -232,6 +233,9 @@ const App: React.FC = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [isExporting, setIsExporting] = useState(false);
+  const [exportedImages, setExportedImages] = useState<string[]>([]);
+  const [showExportModal, setShowExportModal] = useState(false);
+  const [exportProgress, setExportProgress] = useState(0);
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const isNavigatingHistory = useRef(false);
@@ -488,25 +492,76 @@ const App: React.FC = () => {
 
   const handleExport = async () => {
     setIsExporting(true);
-    setTimeout(async () => {
-      try {
-        for (let i = 0; i < slides.length; i++) {
-          const element = document.getElementById(`export-slide-${slides[i].id}`);
-          if (element) {
-            const canvas = await html2canvas(element, { scale: 2, useCORS: true, backgroundColor: null });
-            const link = document.createElement('a');
-            link.download = `slide-${i + 1}.png`;
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-          }
+    setExportedImages([]);
+    setExportProgress(0);
+    setShowExportModal(true);
+
+    // Create a small delay to allow modal to render
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    try {
+      const images: string[] = [];
+      for (let i = 0; i < slides.length; i++) {
+        const element = document.getElementById(`export-slide-${slides[i].id}`);
+        if (element) {
+          const canvas = await html2canvas(element, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: null,
+            logging: false,
+          });
+          const dataUrl = canvas.toDataURL('image/png');
+          images.push(dataUrl);
+          setExportProgress(Math.round(((i + 1) / slides.length) * 100));
         }
-      } catch (e) {
-        console.error("Export failed", e);
-        alert("匯出失敗，請稍後再試。");
-      } finally {
-        setIsExporting(false);
       }
-    }, 100);
+      setExportedImages(images);
+    } catch (e) {
+      console.error("Export failed", e);
+      alert("匯出失敗，請稍後再試。");
+      setShowExportModal(false);
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  const downloadAllAsZip = async () => {
+    if (exportedImages.length === 0) return;
+    const zip = new JSZip();
+
+    exportedImages.forEach((dataUrl, index) => {
+      const base64Data = dataUrl.split(',')[1];
+      zip.file(`socialflow-slide-${index + 1}.png`, base64Data, { base64: true });
+    });
+
+    const content = await zip.generateAsync({ type: 'blob' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(content);
+    link.download = 'socialflow-carousel.zip';
+    link.click();
+  };
+
+  const handleShareImage = async (dataUrl: string, index: number) => {
+    try {
+      const response = await fetch(dataUrl);
+      const blob = await response.blob();
+      const file = new File([blob], `slide-${index + 1}.png`, { type: 'image/png' });
+
+      if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: `SocialFlow Slide ${index + 1}`,
+        });
+      } else {
+        // Fallback: Just trigger a single download
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = `slide-${index + 1}.png`;
+        link.click();
+      }
+    } catch (err) {
+      console.error('Sharing failed', err);
+    }
   };
 
   // Helper for safe number input
@@ -572,8 +627,8 @@ const App: React.FC = () => {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`flex-1 py-4 flex flex-col items-center gap-1 text-xs font-medium transition-colors border-b-2 ${activeTab === tab.id
-                    ? 'border-blue-500 text-blue-400 bg-slate-800/50'
-                    : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/30'
+                  ? 'border-blue-500 text-blue-400 bg-slate-800/50'
+                  : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/30'
                   }`}
               >
                 <tab.icon className="w-5 h-5" />
@@ -664,8 +719,8 @@ const App: React.FC = () => {
                         key={ratio}
                         onClick={() => setConfig(prev => ({ ...prev, aspectRatio: ratio as AspectRatio }))}
                         className={`py-2 px-3 rounded-md text-sm font-medium border ${config.aspectRatio === ratio
-                            ? 'bg-blue-600 border-blue-500 text-white'
-                            : 'bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-700'
+                          ? 'bg-blue-600 border-blue-500 text-white'
+                          : 'bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-700'
                           }`}
                       >
                         {ratio === '1:1' ? '正方形' : ratio === '4:5' ? 'IG貼文' : '限動'}
@@ -694,8 +749,8 @@ const App: React.FC = () => {
                         key={frame.id}
                         onClick={() => setConfig(prev => ({ ...prev, frameStyle: frame.id as FrameStyle }))}
                         className={`flex flex-col items-center justify-center p-2 rounded-lg border transition-all ${config.frameStyle === frame.id
-                            ? 'bg-blue-600 border-blue-500 text-white'
-                            : 'bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-700'
+                          ? 'bg-blue-600 border-blue-500 text-white'
+                          : 'bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-700'
                           }`}
                         title={frame.label}
                       >
@@ -751,8 +806,8 @@ const App: React.FC = () => {
                         key={style.id}
                         onClick={() => handleApplyPreset(style)}
                         className={`flex flex-col items-start p-3 border rounded-lg group transition-all text-left ${activePresetId === style.id
-                            ? 'bg-blue-900/20 border-blue-500'
-                            : 'bg-slate-800 hover:bg-slate-750 border-slate-700 hover:border-blue-500'
+                          ? 'bg-blue-900/20 border-blue-500'
+                          : 'bg-slate-800 hover:bg-slate-750 border-slate-700 hover:border-blue-500'
                           }`}
                       >
                         <div className="flex items-center gap-2 mb-1">
@@ -996,6 +1051,116 @@ const App: React.FC = () => {
       <div style={{ position: 'fixed', top: 0, left: -99999, pointerEvents: 'none', display: 'flex' }}>
         {slides.map((slide, i) => (
           <SlideRenderer key={`export-${slide.id}`} id={`export-slide-${slide.id}`} slide={slide} config={config} scale={1} index={i} totalSlides={slides.length} />
+        ))}
+      </div>
+      {/* Export Modal */}
+      {showExportModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-4 border-b border-slate-700 bg-slate-950">
+              <div className="flex items-center gap-3">
+                <div className="bg-blue-600 p-2 rounded-lg">
+                  <Download className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-white">匯出貼文圖集</h3>
+                  <p className="text-xs text-slate-400">
+                    {isExporting ? `正在生成圖片... ${exportProgress}%` : `已完成 ${exportedImages.length} 張圖片`}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => !isExporting && setShowExportModal(false)}
+                className="p-2 hover:bg-slate-800 rounded-full transition-colors"
+                disabled={isExporting}
+              >
+                <X className="w-6 h-6 text-slate-400" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="flex-1 overflow-y-auto p-4 md:p-6 bg-slate-900/50">
+              {isExporting ? (
+                <div className="flex flex-col items-center justify-center h-64 space-y-6">
+                  <div className="relative w-24 h-24">
+                    <div className="absolute inset-0 border-4 border-slate-700 rounded-full"></div>
+                    <div
+                      className="absolute inset-0 border-4 border-blue-500 rounded-full border-t-transparent animate-spin"
+                      style={{ animationDuration: '1s' }}
+                    ></div>
+                    <div className="absolute inset-0 flex items-center justify-center font-bold text-xl">
+                      {exportProgress}%
+                    </div>
+                  </div>
+                  <div className="text-center space-y-1">
+                    <p className="font-medium text-slate-200">處理每一張精彩的幻燈片...</p>
+                    <p className="text-xs text-slate-500">請勿關閉視窗，這需要一點時間來確保最高畫質</p>
+                  </div>
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {exportedImages.map((img, idx) => (
+                    <div key={idx} className="group relative flex flex-col space-y-2 bg-slate-800 rounded-xl p-2 border border-slate-700 hover:border-blue-500 transition-all shadow-lg overflow-hidden">
+                      <div className="aspect-[4/5] overflow-hidden rounded-lg bg-slate-950 flex items-center justify-center">
+                        <img src={img} className="w-full h-full object-contain" alt={`Slide ${idx + 1}`} />
+                      </div>
+                      <div className="flex items-center justify-between px-1">
+                        <span className="text-[10px] font-bold text-slate-500">Slide {idx + 1}</span>
+                        <button
+                          onClick={() => handleShareImage(img, idx)}
+                          className="p-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md transition-colors flex items-center gap-1 text-[10px] font-bold"
+                        >
+                          <Share2 className="w-3 h-3" />
+                          {navigator.share ? '儲存' : '下載'}
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-4 border-t border-slate-700 bg-slate-950 flex flex-col md:flex-row gap-3 items-center justify-between">
+              <div className="text-xs text-slate-500 hidden md:block">
+                <span className="text-blue-400 font-bold">提示：</span>
+                手機用戶點擊「儲存」後，在選單中按「儲存影像」即可存入照片 App。
+              </div>
+              <div className="flex w-full md:w-auto gap-3">
+                <button
+                  onClick={() => setShowExportModal(false)}
+                  className="flex-1 md:flex-none px-6 py-2.5 border border-slate-700 rounded-xl text-sm font-medium hover:bg-slate-800 text-slate-300 transition-colors"
+                >
+                  關閉
+                </button>
+                <button
+                  onClick={downloadAllAsZip}
+                  disabled={isExporting || exportedImages.length === 0}
+                  className="flex-1 md:flex-none px-6 py-2.5 bg-white text-slate-950 rounded-xl text-sm font-bold hover:bg-slate-200 transition-all shadow-lg flex items-center justify-center gap-2"
+                >
+                  <FileArchive className="w-4 h-4" />
+                  全部下載 (ZIP)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Hidden Export Slides Container (High Resolution) */}
+      <div className="fixed top-[-9999px] left-[-9999px] pointer-events-none opacity-0">
+        {slides.map((s, idx) => (
+          <div key={s.id} id={`export-slide-${s.id}`}>
+            <SlideRenderer
+              slide={s}
+              config={config}
+              scale={1}
+              index={idx}
+              totalSlides={slides.length}
+            />
+          </div>
         ))}
       </div>
     </div>
